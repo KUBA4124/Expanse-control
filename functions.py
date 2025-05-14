@@ -26,7 +26,7 @@ def add():
     date = (input("Podaj datę (DD-MM-YYYY) "))
     description = input("Dodaj opis np. ('Nowe ubrania') ").capitalize()
     print()
-    with open('category.csv', 'a', newline='') as csv_file:
+    with open('category.csv', 'a', newline='', encoding='UTF-8') as csv_file:
         csv_writer = csv.DictWriter(csv_file, fieldnames=FIELDNAMES)
         csv_writer.writerow({
             'amount': amount,
@@ -62,9 +62,9 @@ def categories():
         with open("category.csv") as csv_file:
             csv_reader = csv.DictReader(csv_file)
 
+            print("Kategorie: ")
             for row in csv_reader:
-                print("Kategorie: ")
                 print(row['category'])
-                print()
+            print()
     except FileNotFoundError:
         print("Nie znaleziono pliku")
