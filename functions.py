@@ -6,7 +6,7 @@ FIELDNAMES = ['amount', 'category', 'date', 'description']
 
 def display():
     try:
-        with open('expansions.csv') as csv_file:
+        with open('expansions.csv', encoding='UTF-8') as csv_file:
             csv_reader = csv.DictReader(csv_file)
 
             for row in csv_reader:
@@ -33,6 +33,14 @@ def add():
             'category': category,
             'date': date,
             'description': description
+        })
+        
+    with open('bilans.csv', 'a', newline='', encoding='UTF-8') as csv_file:
+        fieldnames = ['amount', 'category']
+        csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+        csv_writer.writerow({
+            'amount': amount,
+            'category': category
         })
 
 def delete():
