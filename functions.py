@@ -89,25 +89,32 @@ def edit():
 
 def delete():
     expenses = []
-    description = input("Podaj opis do usunięcia: ").capitalize()
-    date = str(input("Podaj date: "))
+    description = input("Podaj opis do usunięcia: ").strip().lower()
+    date = str(input("Podaj date: ")).strip()
     print()
     with open("expansions.csv", encoding='UTF-8') as csv_file:
         csv_reader = csv.DictReader(csv_file)
-
         for row in csv_reader:
-            if row['description'] == description and row['date'] == date:
+            if row['description'].strip().lower() == description and row['date'].strip() == date:
                 continue
-
             expenses.append(row)
 
     with open('expansions.csv', 'w', encoding='UTF-8') as csv_file:
         csv_writer = csv.DictWriter(csv_file, fieldnames=FIELDNAMES)
         csv_writer.writeheader()
-        print("Pomyślnie usunięto wydatek")
-        print()
         for expanse in expenses:
             csv_writer.writerow(expanse)
+
+    print("Pomyślnie usunięto wydatek\n")
+
+    with open('bilans.csv', 'w', newline='', encoding='UTF-8') as csv_file:
+        csv_writer = csv.DictWriter(csv_file, fieldnames=['amount', 'category'])
+        csv_writer.writeheader()
+        for row in expenses:
+            csv_writer.writerow({
+                'amount': row['amount'],
+                'category': row['category']
+            })
 
 def categories():
     try:
