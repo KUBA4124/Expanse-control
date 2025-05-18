@@ -23,8 +23,8 @@ def display():
 def add():
     amount = float(input("Podaj kwotę wydatku np (49.99): "))
     category = input("Podaj kategorię np (Jedzenie, Transport, Rozrywka): ").capitalize()
-    date = (input("Podaj datę (DD-MM-YYYY) "))
-    description = input("Dodaj opis np. ('Nowe ubrania') ").capitalize()
+    date = input("Podaj datę (DD-MM-YYYY) ")
+    description = input("Dodaj opis np. ('Nowe ubrania') ")
     print()
     with open('expansions.csv', 'a', newline='', encoding='UTF-8') as csv_file:
         csv_writer = csv.DictWriter(csv_file, fieldnames=FIELDNAMES)
@@ -43,12 +43,40 @@ def add():
             'category': category
         })
 
+def edit():
+    expenses = []
+    description = input("Podaj opis do edycji: ")
+    with open('expansions.csv', encoding='UTF-8') as csv_file:
+        csv_reader = csv.DictReader(csv_file)
+        for row in csv_reader:
+            if row['description'] == description:
+                new_amount = float(input("Podaj nową kwotę (np: 49.99) "))
+                new_category = input("Wprowadź nową kategorię: ")
+                new_date = input("Wprowadź nową datę: (DD-MM-YYYY) ")
+                new_description = input("Wprowadź nowy opis: ")
+                print()
+
+                row['amount'] = new_amount
+                row['category'] = new_category
+                row['date'] = new_date
+                row['description'] = new_description
+
+            expenses.append(row)
+
+    with open('expansions.csv', 'w') as csv_file:
+        csv_writer = csv.DictWriter(csv_file, fieldnames=FIELDNAMES)
+        csv_writer.writeheader()
+
+        for expense in expenses:
+            csv_writer.writerow(expense)
+
+
 def delete():
     expenses = []
     description = input("Podaj opis do usunięcia: ").capitalize()
     date = str(input("Podaj date: "))
     print()
-    with open("expansions.csv") as csv_file:
+    with open("expansions.csv", encoding='UTF-8') as csv_file:
         csv_reader = csv.DictReader(csv_file)
 
         for row in csv_reader:
@@ -67,7 +95,7 @@ def delete():
 
 def categories():
     try:
-        with open('expansions.csv') as csv_file:
+        with open('expansions.csv', encoding='UTF-8') as csv_file:
             csv_reader = csv.DictReader(csv_file)
 
             print("Kategorie: ")

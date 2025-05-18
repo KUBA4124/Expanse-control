@@ -1,15 +1,16 @@
-from  functions import display, add, delete, categories, date_search
+from  functions import display, add, delete, categories, date_search, edit
 import sys
 while True:
     print("1. Wyświetlenie wydatków")
     print("2. Dodawanie wydatków")
     print("3. Usuwanie wydatków")
-    print("4. Wyświetlanie kategorii")
-    print("5. Filtrowanie po dacie")
-    print("6. Zakończ program")
+    print("4. Edytowanie wydatku")
+    print("5. Wyświetlanie kategorii")
+    print("6. Filtrowanie po dacie")
+    print("7. Zakończ program")
 
     try:
-        option = int(input("Wybierz opcje: (1-6)"))
+        option = int(input("Wybierz opcje: (1-7)"))
         print()
 
         if option == 1:
@@ -19,10 +20,12 @@ while True:
         elif option == 3:
             delete()
         elif option == 4:
-            categories()
+            edit()
         elif option == 5:
-            date_search()
+            categories()
         elif option == 6:
+            date_search()
+        elif option == 7:
             sys.exit()
     except ValueError:
         print("Podaj liczbę")
