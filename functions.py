@@ -63,7 +63,7 @@ def edit():
 
             expenses.append(row)
 
-    with open('expansions.csv', 'w') as csv_file:
+    with open('expansions.csv', 'w', encoding='UTF-8') as csv_file:
         csv_writer = csv.DictWriter(csv_file, fieldnames=FIELDNAMES)
         csv_writer.writeheader()
 
@@ -85,7 +85,7 @@ def delete():
 
             expenses.append(row)
 
-    with open('expansions.csv', 'w') as csv_file:
+    with open('expansions.csv', 'w', encoding='UTF-8') as csv_file:
         csv_writer = csv.DictWriter(csv_file, fieldnames=FIELDNAMES)
         csv_writer.writeheader()
         print("Pomyślnie usunięto wydatek")
