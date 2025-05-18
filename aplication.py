@@ -2,8 +2,8 @@ from  functions import display, add, delete, categories, date_search, edit
 import sys
 while True:
     print("1. Wyświetlenie wydatków")
-    print("2. Dodawanie wydatków")
-    print("3. Usuwanie wydatków")
+    print("2. Dodawanie wydatku")
+    print("3. Usuwanie wydatku")
     print("4. Edytowanie wydatku")
     print("5. Wyświetlanie kategorii")
     print("6. Filtrowanie po dacie")

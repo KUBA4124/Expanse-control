@@ -45,6 +45,7 @@ def add():
 
 def edit():
     expenses = []
+    bilans_data = []
     description = input("Podaj opis do edycji: ")
     with open('expansions.csv', encoding='UTF-8') as csv_file:
         csv_reader = csv.DictReader(csv_file)
@@ -63,12 +64,27 @@ def edit():
 
             expenses.append(row)
 
+            bilans_data.append({
+                'amount': row['amount'],
+                'category': row['category']
+            })
+
     with open('expansions.csv', 'w', encoding='UTF-8') as csv_file:
         csv_writer = csv.DictWriter(csv_file, fieldnames=FIELDNAMES)
         csv_writer.writeheader()
 
         for expense in expenses:
             csv_writer.writerow(expense)
+
+    with open('bilans.csv', 'w', newline='', encoding='UTF-8') as csv_file:
+        fieldnames = ['amount', 'category']
+        csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+        csv_writer.writeheader()
+
+        for row in bilans_data:
+            csv_writer.writerow(row)
+
+    print("Plik zaktualizowany pomyślnie")
 
 
 def delete():
