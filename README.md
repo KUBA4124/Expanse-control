@@ -1,8 +1,10 @@
 Opis:
+
 Aplikacja konsolowa służąca do zarządzania domowym budżetem, stworzona w języku Python. Pozwala na śledzenie wydatków, ich edycję, usuwanie oraz analizę danych na podstawie kategorii i dat.
 Wszystkie dane są przechowywane w plikach CSV, co zapewnia prostą integrację i możliwość przeglądania danych w zewnętrznych programach (np. Excel).
 
 Funkcjonalności:
+
 Dodawanie wydatków – użytkownik może wprowadzić kwotę, kategorię, datę oraz opis.
 
 Edycja wydatków – możliwość aktualizacji wszystkich pól (kwota, kategoria, data, opis).
@@ -15,6 +17,7 @@ Lista dostępnych kategorii – szybki przegląd istniejących kategorii wydatk�
 
 Zapis do plików CSV:
 
+
 expansions.csv – pełne dane o wydatkach.
 
 bilans.csv – uproszczone dane: kwota i kategoria.
@@ -24,6 +27,8 @@ Synchronizacja danych – każda zmiana w expansions.csv automatycznie aktualizu
 Generowanie wykresu kołowego (Matplotlib) – wizualizacja udziału kategorii w całkowitych wydatkach.
 
 Struktura danych:
+
+
 Plik expansions.csv zawiera pola:
 
 amount – kwota wydatku
@@ -42,6 +47,7 @@ category
 (używany głównie do wykresów i analiz)
 
 Przykłady zastosowania:
+
 Codzienne śledzenie wydatków osobistych
 
 Prosty budżet dla studenta lub gospodarstwa domowego
@@ -51,6 +57,7 @@ Nauka programowania: praca z plikami, słownikami, listami, biblioteką csv i ma
 Rozbudowa o własne funkcje (np. filtry, limity, eksport do PDF)
 
 Możliwości rozwoju:
+
 Wyszukiwanie wydatków po dacie, zakresie dat lub kategorii
 
 Ustawienie miesięcznego budżetu i alertów
