@@ -129,7 +129,7 @@ def categories():
         print("Nie znaleziono pliku")
 
 def date_search():
-    date = str(input("Informację z jakiej daty cię interesują? (DD-MM-YYYY)"))
+    date = str(input("Informację z którego dnia cię interesują? (DD-MM-YYYY)"))
     print()
     counter = 0
 
@@ -145,5 +145,5 @@ def date_search():
                 counter += 1
                 print()
     if counter == 0:
-        print("Nie ma wydatku z taką datą")
+        print("Nie ma wydatku z takiego dnia")
         print()
